@@ -47,13 +47,8 @@ public class Marca extends Carro {
     public void removerCarro(Carro carro) {
         if (carro == null) return;
         this.carros.remove(carro);
-        if (carro.getMarca() == this) {
-            carro.setMarca(null);
-        }
+
     }
 
-    @Override
-    public String toString() {
-        return "Marca{id=" + id + ", nombre='" + nombre + "', pais='" + pais + "'}";
-    }
+
 }

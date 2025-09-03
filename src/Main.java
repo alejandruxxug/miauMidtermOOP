@@ -9,7 +9,8 @@ public class Main {
         System.out.print("1. Most Sold brand");
         System.out.print("2. Brand with most accidents");
         System.out.print("3. Incidents of each owner");
-        System.out.print("4. Exit");
+        System.out.print("4. Origin country & how many cars");
+        System.out.print("5. Exit");
     }
 
     public static void main(String[] args) {
@@ -45,11 +46,11 @@ public class Main {
         duenos.add(dueno2);
         duenos.add(dueno3);
 
-        carros.get(0).vincularDueno(dueno);
-        carros.get(1).vincularDueno(dueno2);
-        carros.get(2).vincularDueno(dueno3);
-        carros.get(3).vincularDueno(dueno3);
-        carros.get(4).vincularDueno(dueno3);
+        c1.vincularDueno(dueno);
+        c2.vincularDueno(dueno2);
+        c3.vincularDueno(dueno3);
+        c4.vincularDueno(dueno3);
+        c5.vincularDueno(dueno3);
 
         c1.agregarComentario("Chimba de nave mano, chiiimba de nave", "2023-11-15");
         c1.agregarComentario("Tenemos la misma marca de carro zapatica -miao", "2023-11-15");
@@ -69,35 +70,32 @@ public class Main {
         marcas.add(m3);
         marcas.add(m4);
 
-        m1.agregarCarro(carros.get(0));
-        m1.agregarCarro(carros.get(4));
-        m2.agregarCarro(carros.get(1));
-        m3.agregarCarro(carros.get(2));
-        m4.agregarCarro(carros.get(3));
+        m1.agregarCarro(c1);
+        m1.agregarCarro(c5);
+        m2.agregarCarro(c2);
+        m3.agregarCarro(c1);
+        m4.agregarCarro(c4);
 
 
         Incidente i1 = new Incidente(1, "Collision", "2023-10-05", "555-1234");
         Incidente i2 = new Incidente(2, "Exploto", "2023-10-05", "5we55-1234");
         Incidente i3 = new Incidente(3, "Devoro el carro", "2023-10-05", "552345-1234");
         Incidente i4 = new Incidente(4, "Miau", "2023-10-05", "555234-12354");
-        
+
         incidentes.add(i1);
         incidentes.add(i2);
         incidentes.add(i3);
         incidentes.add(i4);
-        
+
         i1.setDueno(dueno);
         i2.setDueno(dueno2);
         i3.setDueno(dueno3);
         i4.setDueno(dueno3);
-        
+
         dueno.agregarIncidente(i1);
         dueno2.agregarIncidente(i2);
         dueno3.agregarIncidente(i3);
         dueno3.agregarIncidente(i4);
-        
-
-
 
         while (!done) {
             options();
@@ -107,13 +105,45 @@ public class Main {
                     //Most Sold Brand
                     Marca mostSold = null;
                     int maxCars = 0;
+                    for (Marca marca : marcas) {
+                        int carCount = marca.getCarros().size();
+                        if (carCount > maxCars) {
+                            maxCars = carCount;
+                            mostSold = marca;
+                        }
+                    }
 
+                    System.out.println("Most Sold Brand: " + mostSold.getNombre());
                     break;
                 case 2:
+                    //brand with the most accidents
+
+//                    for (int i =0 ; i < duenos.size(); i++) {
+//                        System.out.println("Dueno: " + duenos.get(i).getNombre());
+//                        for (int j =0 ; j < duenos.get(i).getIncidentes().size(); j++) {
+//                            System.out.print("Incidentes " + duenos.get(i).getNombre());
+//
+//                            for (int k = 0; k < marcas.size(); k++) {
+//                                if (duenos.get(i).getCarros().get(j).getMarca().equals(marcas.get(k))) {
+//                                    System.out.println(duenos.get(i).getCarros().get(j).getMarca().getNombre());
+//
+//                                }
+//                            }
+//                        }
+//                    }
+
+                    for (Marca marca : marcas) {}
                     break;
                 case 3:
+                    for (Dueno d : duenos) {
+                        System.out.println("Dueno: " + d.getIncidentes().toString());
+                    }
                     break;
+
                 case 4:
+
+                    break;
+                case 5:
                     done = true;
                     System.out.println("Slay... See you again next time!~");
                     break;

@@ -23,8 +23,5 @@ public class Comentario {
     public Carro getCarro() { return carro; }
     public void setCarro(Carro carro) { this.carro = carro; }
 
-    @Override
-    public String toString() {
-        return "Comentario{id=" + id + ", descripcion='" + descripcion + "', fecha=" + fechaComentario + "}";
-    }
+
 }

@@ -38,6 +38,12 @@ public class Incidente {
 
     @Override
     public String toString() {
-        return "Incidente{codigo=" + codigo + ", tipo='" + tipoIncidente + "', fecha=" + fechaIncidente + "}";
+        return "Incidentes" +
+                "codigo=" + codigo +
+                ", tipoIncidente='" + tipoIncidente + '\'' +
+                ", fechaIncidente='" + fechaIncidente + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", dueno=" + dueno.getNombre() +
+                '}';
     }
 }

@@ -75,8 +75,4 @@ public class Dueno {
         return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        return "Dueno{cedula=" + cedula + ", nombre='" + nombre + " " + apellido + "'}";
-    }
 }

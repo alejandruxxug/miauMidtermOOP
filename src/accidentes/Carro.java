@@ -98,19 +98,5 @@ public class Carro {
         return sb.toString();
     }
 
-    @Override
-    public String toString() {
-        return "Carro{placa='" + placa + "', modelo='" + modelo + "', anio=" + anioLanzamiento + "}";
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Carro)) return false;
-        Carro carro = (Carro) o;
-        return Objects.equals(placa, carro.placa);
-    }
-
-    @Override
-    public int hashCode() { return Objects.hash(placa); }
 }
