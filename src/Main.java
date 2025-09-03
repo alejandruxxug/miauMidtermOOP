@@ -80,8 +80,22 @@ public class Main {
         Incidente i2 = new Incidente(2, "Exploto", "2023-10-05", "5we55-1234");
         Incidente i3 = new Incidente(3, "Devoro el carro", "2023-10-05", "552345-1234");
         Incidente i4 = new Incidente(4, "Miau", "2023-10-05", "555234-12354");
-
-
+        
+        incidentes.add(i1);
+        incidentes.add(i2);
+        incidentes.add(i3);
+        incidentes.add(i4);
+        
+        i1.setDueno(dueno);
+        i2.setDueno(dueno2);
+        i3.setDueno(dueno3);
+        i4.setDueno(dueno3);
+        
+        dueno.agregarIncidente(i1);
+        dueno2.agregarIncidente(i2);
+        dueno3.agregarIncidente(i3);
+        dueno3.agregarIncidente(i4);
+        
 
 
 
