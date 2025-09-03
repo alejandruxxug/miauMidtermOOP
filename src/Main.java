@@ -73,7 +73,7 @@ public class Main {
         m1.agregarCarro(c1);
         m1.agregarCarro(c5);
         m2.agregarCarro(c2);
-        m3.agregarCarro(c1);
+        m3.agregarCarro(c3);
         m4.agregarCarro(c4);
 
 
@@ -117,20 +117,12 @@ public class Main {
                     break;
                 case 2:
                     //brand with the most accidents
+                    Marca MostAccidents;
+                    int maxAccidents = 0;
 
-//                    for (int i =0 ; i < duenos.size(); i++) {
-//                        System.out.println("Dueno: " + duenos.get(i).getNombre());
-//                        for (int j =0 ; j < duenos.get(i).getIncidentes().size(); j++) {
-//                            System.out.print("Incidentes " + duenos.get(i).getNombre());
-//
-//                            for (int k = 0; k < marcas.size(); k++) {
-//                                if (duenos.get(i).getCarros().get(j).getMarca().equals(marcas.get(k))) {
-//                                    System.out.println(duenos.get(i).getCarros().get(j).getMarca().getNombre());
-//
-//                                }
-//                            }
-//                        }
-//                    }
+                    for (int i = 0; i<incidentes.size(); i++) {
+
+                    }
 
                     for (Marca marca : marcas) {}
                     break;
@@ -141,7 +133,18 @@ public class Main {
                     break;
 
                 case 4:
+                    //Most common origin country and how many cars
+                    Marca mostCountry = null;
+                    int maxCountry = 0;
+                    for (Marca marca : marcas) {
+                        int carCount = marca.getCarros().size();
+                        if (carCount > maxCountry) {
+                            maxCountry = carCount;
+                            mostCountry = marca;
+                        }
+                    }
 
+                    System.out.println("Most Country: " + mostCountry.getPais() + " with " + maxCountry + " cars");
                     break;
                 case 5:
                     done = true;
