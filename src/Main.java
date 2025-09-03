@@ -22,7 +22,6 @@ public class Main {
         int option;
         ArrayList<Carro> carros = new ArrayList<>();
         ArrayList<Dueno> duenos = new ArrayList<>();
-        ArrayList<Comentario> comentarios = new ArrayList<>();
         ArrayList<Incidente> incidentes = new ArrayList<>();
         ArrayList<Marca> marcas = new ArrayList<>();
 
@@ -117,14 +116,32 @@ public class Main {
                     break;
                 case 2:
                     //brand with the most accidents
-                    Marca MostAccidents;
-                    int maxAccidents = 0;
 
-                    for (int i = 0; i<incidentes.size(); i++) {
+                    Marca MostAccidents = null;
+                    int brandAccident = 0;
+                    int maxAccidents = -1;
 
+                    for (int i = 0; i < marcas.size(); i++) {
+                        Marca marca = marcas.get(i);
+
+                        for (int j = 0; j < incidentes.size(); j++) {
+                            Dueno duenoCar = incidentes.get(j).getDueno();
+
+                            for (int k = 0; k< duenoCar.getCarros().size(); k++) {
+
+                                if (duenoCar.getCarros().get(k).getMarca().equals(marca)) {
+                                    brandAccident ++;
+                                }
+                            }
+                        }
+                        if (brandAccident>maxAccidents) {
+                           maxAccidents = brandAccident;
+                           MostAccidents = marcas.get(i);
+                       }
+                        brandAccident = 0;
                     }
 
-                    for (Marca marca : marcas) {}
+                   System.out.println("Most Accident Brand: " + MostAccidents.getNombre());
                     break;
                 case 3:
                     for (Dueno d : duenos) {
