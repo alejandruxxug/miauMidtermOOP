@@ -5,7 +5,7 @@ import java.util.Date;
 public class Incidente {
     private long codigo;
     private String tipoIncidente;
-    private Date fechaIncidente;
+    private String fechaIncidente;
     private String telefono;
 
     // Relación: pertenece a un Dueño (0..n desde Dueño a 1 Incidente)

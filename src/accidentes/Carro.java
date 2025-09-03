@@ -53,7 +53,7 @@ public class Carro {
     public ArrayList<Dueno> getDuenos() { return duenos; }
 
     // Métodos de ayuda
-    public void agregarComentario(String descripcion, Date fecha) {
+    public void agregarComentario(String descripcion, String fecha) {
         Comentario c = new Comentario();
         c.setDescripcion(descripcion);
         c.setFechaComentario(fecha);

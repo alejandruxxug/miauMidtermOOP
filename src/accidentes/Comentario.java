@@ -5,7 +5,7 @@ import java.util.Date;
 public class Comentario {
     private long id;
     private String descripcion;
-    private Date fechaComentario;
+    private String fechaComentario;
 
     // Relación: pertenece a un Carro
     private Carro carro;
@@ -17,8 +17,8 @@ public class Comentario {
     public String getDescripcion() { return descripcion; }
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public Date getFechaComentario() { return fechaComentario; }
-    public void setFechaComentario(Date fechaComentario) { this.fechaComentario = fechaComentario; }
+    public String getFechaComentario() { return fechaComentario; }
+    public void setFechaComentario(String fechaComentario) { this.fechaComentario = fechaComentario; }
 
     public Carro getCarro() { return carro; }
     public void setCarro(Carro carro) { this.carro = carro; }
