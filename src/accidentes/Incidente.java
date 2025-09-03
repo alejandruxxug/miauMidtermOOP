@@ -13,7 +13,7 @@ public class Incidente {
 
     public Incidente() {}
 
-    public Incidente(long codigo, String tipoIncidente, Date fechaIncidente, String telefono) {
+    public Incidente(long codigo, String tipoIncidente, String fechaIncidente, String telefono) {
         this.codigo = codigo;
         this.tipoIncidente = tipoIncidente;
         this.fechaIncidente = fechaIncidente;
@@ -27,8 +27,8 @@ public class Incidente {
     public String getTipoIncidente() { return tipoIncidente; }
     public void setTipoIncidente(String tipoIncidente) { this.tipoIncidente = tipoIncidente; }
 
-    public Date getFechaIncidente() { return fechaIncidente; }
-    public void setFechaIncidente(Date fechaIncidente) { this.fechaIncidente = fechaIncidente; }
+    public String getFechaIncidente() { return fechaIncidente; }
+    public void setFechaIncidente(String fechaIncidente) { this.fechaIncidente = fechaIncidente; }
 
     public String getTelefono() { return telefono; }
     public void setTelefono(String telefono) { this.telefono = telefono; }

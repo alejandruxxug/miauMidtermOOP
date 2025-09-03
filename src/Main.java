@@ -30,15 +30,16 @@ public class Main {
         Carro c1 = new Carro("LFO215", "Arkana", 2026);
         Carro c2 = new Carro("LKO567", "Mustang", 2018);
         Carro c3 = new Carro("HJU890", "Civic", 2019);
-        Carro c4 = new Carro("LST650", "Civic", 2019);
-        Carro c5 = new Carro("NHW9", "Civic", 2019);
+        Carro c4 = new Carro("LST650", "Picanto", 2019);
+        Carro c5 = new Carro("NHW914", "Koleos", 2019);
         carros.add(c1);
         carros.add(c2);
         carros.add(c3);
 
-        Dueno dueno = new Dueno(123456789, "John", "Doe", "555-1234");
+        Dueno dueno = new Dueno(123456789, "Seb", "Zap", "555-1234");
         Dueno dueno2 = new Dueno(987654321, "Jane", "Smith", "555-5678");
         Dueno dueno3 = new Dueno(1283991, "Alejo", "Urrego", "555-5678");
+
         duenos.add(dueno);
         duenos.add(dueno2);
         duenos.add(dueno3);
@@ -46,10 +47,18 @@ public class Main {
         carros.get(0).vincularDueno(dueno);
         carros.get(1).vincularDueno(dueno2);
         carros.get(2).vincularDueno(dueno3);
+        carros.get(3).vincularDueno(dueno3);
+        carros.get(4).vincularDueno(dueno3);
 
-        agregarComentario("Great car!", "2023-10-01", c1, comentarios);
-        agregarComentario("Needs maintenance.", "2023-11-15", c2, comentarios);
-        agregarComentario("Very reliable.", "2024-01-20", c3, comentarios);
+        c1.agregarComentario("Chimba de nave mano, chiiimba de nave", "2023-11-15");
+        c1.agregarComentario("Tenemos la misma marca de carro zapatica -miao", "2023-11-15");
+        c3.agregarComentario("Increiblemente bueno.", "2024-01-20");
+        c2.agregarComentario("Needs maintenance.", "2023-11-15");
+        c3.agregarComentario("Very reliable.", "2024-01-20");
+        c4.agregarComentario("El carro 1 de alejo jajjasj", "2024-01-20");
+        c5.agregarComentario("El carro 2 de alejo que carro mas tragonn", "2024-01-20");
+
+        Incidente i1 = new Incidente(1, "Collision", "2023-10-05", "555-1234");
 
 
 
