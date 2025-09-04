@@ -6,11 +6,16 @@ import java.util.Scanner;
 public class Main {
 
     public static void options() {
-        System.out.print("1. Most Sold brand");
-        System.out.print("2. Brand with most accidents");
-        System.out.print("3. Incidents of each owner");
-        System.out.print("4. Origin country & how many cars");
-        System.out.print("5. Exit");
+        System.out.println("1. Create Owner");
+        System.out.println("2. Create Brand");
+        System.out.println("3. Create Car");
+        System.out.println("4. Create Accident");
+        System.out.println("5. Find the most Sold brand");
+        System.out.println("6. Brand with most accidents");
+        System.out.println("7. Incidents of each owner");
+        System.out.println("8. Origin country & how many cars");
+        System.out.println("9. Exit");
+        System.out.print("Select an option my dear: ");
     }
 
     public static void main(String[] args) {
@@ -19,6 +24,7 @@ public class Main {
         boolean done = false;
         Scanner input = new Scanner(System.in);
         Scanner number = new Scanner(System.in);
+
         int option;
         ArrayList<Carro> carros = new ArrayList<>();
         ArrayList<Dueno> duenos = new ArrayList<>();
@@ -100,7 +106,48 @@ public class Main {
             options();
             option = number.nextInt();
             switch (option) {
+
                 case 1:
+
+                    //long cedula, String nombre, String apellido, String telefono
+
+                    System.out.println("Enter the govermentId");
+                    long govID = number.nextLong();
+                    System.out.println("Enter the name of the owner");
+                    String nameOwner = input.nextLine();
+                    System.out.println("Enter the surname of the owner");
+                    String surnameOwner = input.nextLine();
+                    System.out.println("Enter the telephone of the owner");
+                    String telephoneOwner = input.nextLine();
+
+                    Dueno duenoCreated = new Dueno(govID, nameOwner, surnameOwner, telephoneOwner);
+                    duenos.add(duenoCreated);
+
+                    System.out.println("Owner: " + duenoCreated.getNombre() + " " + duenoCreated.getApellido() + " Created successfully!~");
+                    break;
+
+                case 2:
+                    System.out.println("Enter the ID of the Brand");
+                    long brandID = number.nextLong();
+                    System.out.println("Enter the name of the Brand");
+                    String brandName = input.nextLine();
+                    System.out.println("Enter the country of the Brand");
+                    String brandCountry = input.nextLine();
+
+                    Marca brand = new Marca(brandID, brandName, brandCountry);
+                    marcas.add(brand);
+                    System.out.println("Brand: " + brand.getNombre() + " Succesfully created!~");
+                    break;
+
+                case 3:
+                    //String placa, String modelo, int anioLanzamiento)
+
+
+
+                    break;
+                case 4:
+                    break;
+                case 5:
                     //Most Sold Brand
                     Marca mostSold = null;
                     int maxCars = 0;
@@ -114,10 +161,10 @@ public class Main {
 
                     System.out.println("Most Sold Brand: " + mostSold.getNombre());
                     break;
-                case 2:
-                    //brand with the most accidents
+                case 6:
 
-                    Marca MostAccidents = null;
+                    //brand with the most accidents
+                    Marca mostAccidents = null;
                     int brandAccident = 0;
                     int maxAccidents = -1;
 
@@ -136,20 +183,23 @@ public class Main {
                         }
                         if (brandAccident>maxAccidents) {
                            maxAccidents = brandAccident;
-                           MostAccidents = marcas.get(i);
+                           mostAccidents = marcas.get(i);
                        }
                         brandAccident = 0;
                     }
 
-                   System.out.println("Most Accident Brand: " + MostAccidents.getNombre());
+                    System.out.println("Most Accident Brand: " + mostAccidents.getNombre() + " (" + maxAccidents + ")");
+
+
+                    //System.out.println("Most Accident Brand: " + MostAccidents.getNombre());
                     break;
-                case 3:
+                case 7:
                     for (Dueno d : duenos) {
                         System.out.println("Dueno: " + d.getIncidentes().toString());
                     }
                     break;
 
-                case 4:
+                case 8:
                     //Most common origin country and how many cars
                     Marca mostCountry = null;
                     int maxCountry = 0;
@@ -163,7 +213,7 @@ public class Main {
 
                     System.out.println("Most Country: " + mostCountry.getPais() + " with " + maxCountry + " cars");
                     break;
-                case 5:
+                case 9:
                     done = true;
                     System.out.println("Slay... See you again next time!~");
                     break;
