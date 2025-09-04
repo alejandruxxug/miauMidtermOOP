@@ -10,11 +10,12 @@ public class Main {
         System.out.println("2. Create Brand");
         System.out.println("3. Create Car");
         System.out.println("4. Create Accident");
-        System.out.println("5. Find the most Sold brand");
-        System.out.println("6. Brand with most accidents");
-        System.out.println("7. Incidents of each owner");
-        System.out.println("8. Origin country & how many cars");
-        System.out.println("9. Exit");
+        System.out.println("5. Create a Comment");
+        System.out.println("6. Find the most Sold brand");
+        System.out.println("7. Brand with most accidents");
+        System.out.println("8. Incidents of each owner");
+        System.out.println("9. Origin country & how many cars");
+        System.out.println("0. Exit");
         System.out.print("Select an option my dear: ");
     }
 
@@ -33,7 +34,7 @@ public class Main {
 
         // Sample data
 
-        Carro c1 = new Carro("LFO215", "Arkana", 2026);
+        Carro c1 = new Carro("LFD215", "Arkana", 2026);
         Carro c2 = new Carro("LKO567", "Mustang", 2018);
         Carro c3 = new Carro("HJU890", "Civic", 2019);
         Carro c4 = new Carro("LST650", "Picanto", 2019);
@@ -141,13 +142,115 @@ public class Main {
 
                 case 3:
                     //String placa, String modelo, int anioLanzamiento)
+                    System.out.println("Enter the license plate");
+                    String licensePlate = input.nextLine();
+                    System.out.println("Enter the model of the vehicle");
+                    String model = input.nextLine();
+                    System.out.println("Enter the year of the vehicle");
+                    int year = number.nextInt();
 
+                    System.out.println("Select from the brands...");
+                    for (Marca m : marcas) {
+                        System.out.println(m.getNombre() + " " + "ID: " + m.getId());
+                    }
+                    System.out.println("Enter the ID of the Brand");
+                    long idBrand = number.nextLong();
 
+                    Marca setMarcaCar = null;
+
+                    for (Marca m : marcas) {
+                        if (m.getId() == idBrand) {
+                            setMarcaCar = m;
+                        }
+                    }
+
+                    System.out.println("Enter the govermentId of the owner");
+                    for (Dueno d : duenos) {
+                        System.out.println(d.getNombre() + " " + "ID: " + d.getCedula());
+                    }
+                    long cedula = number.nextLong();
+
+                    Dueno setDuenoCarro = null;
+
+                    for (Dueno d : duenos) {
+                        if (d.getCedula() == cedula) {
+                            setDuenoCarro = d;
+                            break;
+                        }
+                    }
+
+                    Carro carro = new Carro(licensePlate, model, year);
+                    carro.vincularDueno(setDuenoCarro);
+                    carro.setMarca(setMarcaCar);
+                    carros.add(carro);
+
+                    System.out.println(carro.getMarca().getNombre() + " " + carro.getModelo() + " is owned by " + setDuenoCarro.getNombre());
 
                     break;
                 case 4:
+                    //long codigo, String tipoIncidente, String fechaIncidente, String telefono
+                    System.out.println("Enter the code of the Incident");
+                    long code = number.nextLong();
+                    System.out.println("Enter the type of the Incident");
+                    String type = input.nextLine();
+                    System.out.println("Enter the date of the Incident");
+                    String date = input.nextLine();
+
+                    System.out.println("Enter the telephone of the accidented person");
+                    for (Dueno d : duenos) {
+                        System.out.println(d.getNombre() + " " + "Telephone: " + d.getTelefono());
+                    }
+
+                    String telephoneAccident = input.nextLine();
+
+                    Dueno setDuenoAccident = null;
+
+                    for (Dueno d : duenos) {
+                        if (d.getTelefono().equals(telephoneAccident)) {
+                            setDuenoAccident = d;
+                            break;
+                        }
+                    }
+
+                    Incidente incidente = new Incidente(code, type, date, telephoneAccident);
+                    incidente.setDueno(setDuenoAccident);
+
+                    incidentes.add(incidente);
+
+                    System.out.println(incidente.getDueno().getNombre() + " " + incidente.getDueno().getApellido() + " had a " + incidente.getTipoIncidente() + " on " + incidente.getFechaIncidente());
                     break;
+
                 case 5:
+                    //String descripcion, String fecha
+
+                    System.out.println("Enter the comment!");
+                    String comentario = input.nextLine();
+                    System.out.println("Enter date of the comment! (ik this shi weirdd but its 9:24");
+                    String dateComment = input.nextLine();
+
+                    System.out.println("Write the license plate of the car you want to comment");
+
+                    for (Carro c : carros) {
+                        System.out.println(c.getMarca().getNombre() + " " + c.getModelo() + " License Plate: " + c.getPlaca());
+                    }
+
+                    String licensePlateComment = input.nextLine();
+                    System.out.println(licensePlateComment);
+                    Carro setCarro = null;
+
+                    for (Carro c : carros) {
+                        if (c.getPlaca().equals(licensePlateComment)) {
+                            setCarro = c;
+                            break;
+                        }
+                    }
+
+                    setCarro.agregarComentario(comentario, dateComment);
+
+                    System.out.println(setCarro.getComentarios().getLast().getDescripcion() + " was commented to " + setCarro.getMarca().getNombre() + " " + setCarro.getModelo() + " " + setCarro.getPlaca());
+
+                    break;
+                case 6:
                     //Most Sold Brand
                     Marca mostSold = null;
                     int maxCars = 0;
@@ -161,7 +264,7 @@ public class Main {
 
                     System.out.println("Most Sold Brand: " + mostSold.getNombre());
                     break;
-                case 6:
+                case 7:
 
                     //brand with the most accidents
                     Marca mostAccidents = null;
@@ -189,17 +292,15 @@ public class Main {
                     }
 
                     System.out.println("Most Accident Brand: " + mostAccidents.getNombre() + " (" + maxAccidents + ")");
-
-
-                    //System.out.println("Most Accident Brand: " + MostAccidents.getNombre());
                     break;
-                case 7:
+
+                case 8:
                     for (Dueno d : duenos) {
                         System.out.println("Dueno: " + d.getIncidentes().toString());
                     }
                     break;
 
-                case 8:
+                case 9:
                     //Most common origin country and how many cars
                     Marca mostCountry = null;
                     int maxCountry = 0;
@@ -213,7 +314,7 @@ public class Main {
 
                     System.out.println("Most Country: " + mostCountry.getPais() + " with " + maxCountry + " cars");
                     break;
-                case 9:
+                case 0:
                     done = true;
                     System.out.println("Slay... See you again next time!~");
                     break;
